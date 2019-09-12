@@ -1,39 +1,23 @@
-function Letter(char, guess) {
+function Letter(char) {
   // Letter in word
   this.letterToGuess = char;
-  // Placeholder
-  this.placeholder = "_";
   // If the letter has been guessed yet
   this.guessedYet = false;
-  // User guess
-  this.guess = guess;
+  // Check if letter has been guessed correctly and show letter or space
+  this.display = function() {
+    if (!this.guessedYet) {
+      return "_";
+    }
+    else {
+      return this.letterToGuess;
+    }
+  };
+  // Take in guess and if it matches the letter, update guessedYet to true
+  this.takeLetter = function(guess) {
+    if(this.letterToGuess === guess) {
+      this.guessedYet = true;
+    }
+  };
 }
-
-Letter.prototype.display = function() {
-  console.log("In display");
-  if (!this.guessedYet) {
-    console.log(this.placeholder)
-  }
-  else {
-    console.log(this.letterToGuess)
-  }
-};
-
-// Take in guess and if it matches the letter, update guessedYet to true
-Letter.prototype.takeLetter = function() {
-  console.log("In take letter")
-  if(this.letterToGuess === this.guess) {
-    this.guessedYet = true;
-    test.display();
-  }
-  else {
-    console.log("wrong guess");
-    test.display();
-  }
-};
-
-var test = new Letter("t", "a");
-
-test.takeLetter();
 
 module.exports = Letter;
