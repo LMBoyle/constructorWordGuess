@@ -6,11 +6,16 @@ var wordOpt = ["Argument", "Boolean", "Branch", "Bracket", "Callback", "Construc
 var guesses = 10;
 var wordToGuess = "";
 var runWord;
+var wordArr;
+var display;
 
-function newGame() {
+function newWord() {
   wordToGuess = wordOpt[Math.floor(Math.random() * wordOpt.length)];
   runWord = new Word(wordToGuess);
+  wordArr = runWord.wordToArray();
+  display = runWord.show();
   console.log(runWord)
+  // console.log(wordArr)
 };
 
 function displayWord() {
@@ -21,3 +26,4 @@ function makeGuess() {
 
 };
 
+newWord();

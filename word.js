@@ -5,14 +5,17 @@ function Word(word) {
   this.word = word;
   // Word into an array
   this.lettersArr = [];
-  // Breaking down word to letters and pushing to array
-  this.wordToArray = function() {
-    // Split the word into letters
-    var breakWord = this.word.split("");
-    // Run Letter for each letter and push to array
-    for (var l = 0; l < breakWord.length; l++) {
-      this.lettersArr.push(new Letter(breakWord[l]));
-    };
+  // Run Letter for each letter and push to array
+  for (var l = 0; l < word.length; l++) {
+    this.lettersArr.push(new Letter(word[l]));
+  };
+  // Combines letters into a string and displays on screen
+  this.createString = function() {
+    var wordString = "";
+    for (var s = 0; s < this.lettersArr.length; s++) {
+      wordString += this.lettersArr[s].display() + " ";
+    }
+    return wordString;
   };
   // When guess is made, run Letter guess function
   this.guessMade = function(guess) {
@@ -20,15 +23,10 @@ function Word(word) {
       this.lettersArr[g].takeLetter(guess)
     }
   };
-  // Combines letters into a string and displays on screen
-  this.show = function() {
-    var string = "";
-    for (var s = 0; s < this.lettersArr.length; s++) {
-      string += this.lettersArr[s].takeLetter() + " ";
-    }
-    console.log(this.lettersArr);
-    return string;
-  };
 };
 
 module.exports = Word;
+
+var test = new Word("test");
+test.createString();
+console.log(test)
