@@ -10,7 +10,7 @@ function Word(word) {
     // Split the word into letters
     var breakWord = this.word.split("");
     // Run Letter for each letter and push to array
-    for (l = 0; l < breakWord.length; l++) {
+    for (var l = 0; l < breakWord.length; l++) {
       this.lettersArr.push(new Letter(breakWord[l]));
     };
   };
@@ -31,7 +31,4 @@ function Word(word) {
   };
 };
 
-var test = new Word("working");
-test.wordToArray();
-test.guessMade("w")
-test.show();
+module.exports = Word;
