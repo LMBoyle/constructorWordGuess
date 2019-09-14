@@ -6,24 +6,38 @@ var wordOpt = ["Argument", "Boolean", "Branch", "Bracket", "Callback", "Construc
 var guesses = 10;
 var wordToGuess = "";
 var runWord;
-var wordArr;
 var display;
 
 function newWord() {
   wordToGuess = wordOpt[Math.floor(Math.random() * wordOpt.length)];
   runWord = new Word(wordToGuess);
-  wordArr = runWord.wordToArray();
-  display = runWord.show();
-  console.log(runWord)
-  // console.log(wordArr)
+  displayWord();
 };
 
 function displayWord() {
-
+  display = runWord.createString();
+  console.log(display);
+  prompt();
 };
 
-function makeGuess() {
+function prompt(){
+  if (guesses > 0 || wordToGuess === display) {
+    inquirer.prompt([
+      {
+        type: "input",
+        name: "guess",
+        message: "Guess a letter!"
+      }
+    ]).then(function (ans) {
+      console.log(ans.guess);
+      runWord.guessMade(ans.guess);
+      displayWord();
+    })
+  }
+  else {
+    console.log("End")
+  }
+}
 
-};
 
 newWord();

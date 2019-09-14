@@ -14,19 +14,15 @@ function Word(word) {
     var wordString = "";
     for (var s = 0; s < this.lettersArr.length; s++) {
       wordString += this.lettersArr[s].display() + " ";
-    }
+    };
     return wordString;
   };
   // When guess is made, run Letter guess function
   this.guessMade = function(guess) {
     for (var g = 0; g <this.lettersArr.length; g++) {
       this.lettersArr[g].takeLetter(guess)
-    }
+    };
   };
 };
 
 module.exports = Word;
-
-var test = new Word("test");
-test.createString();
-console.log(test)
