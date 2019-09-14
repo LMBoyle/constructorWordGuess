@@ -1,14 +1,16 @@
 var Word = require("./word.js");
 var inquirer = require("inquirer");
 
-var wordOpt = ["Argument", "Boolean", "Branch", "Bracket", "Callback", "Constructor", "Debug", "Developer", "Error", "Expression", "Foreach", "Function", "Github", "Glitch", "JavaScript", "Operator", "Program", "Statement", "Terminal"];
+var wordOpt = ["argument", "boolean", "branch", "bracket", "callback", "constructor", "debug", "developer", "error", "expression", "foreach", "function", "github", "glitch", "javascript", "operator", "program", "statement", "terminal"];
 
 var guesses = 10;
 var wordToGuess = "";
 var runWord;
 var display;
 var booArr = [];
+var guessedLetters = [];
 
+// Pick a new word to guess
 function newWord() {
   wordToGuess = wordOpt[Math.floor(Math.random() * wordOpt.length)];
   runWord = new Word(wordToGuess);
@@ -16,21 +18,24 @@ function newWord() {
   pushBoo();
 };
 
+// Push to booArr the boolean values for letters
 function pushBoo() {
-  booArr = []
+  booArr = [];
+
   for (var b = 0; b < runWord.lettersArr.length; b++) {
     booArr.push(runWord.lettersArr[b].guessedYet)
   }
   displayWord();
 }
 
+// Show the blanks and guessed letters on the screen
 function displayWord() {
   display = runWord.createString();
   console.log(display)
-  console.log(booArr)
   prompt();
 };
 
+// Prompt the user to guess a letter
 function prompt(){
   if (guesses > 0 && booArr.includes(false)) {
     inquirer.prompt([
@@ -41,9 +46,16 @@ function prompt(){
       }
     ]).then(function (ans) {
       console.log(wordToGuess);
-      runWord.guessMade(ans.guess);
-      nextStep();
-    })
+      if (guessedLetters.includes(ans.guess)) {
+        console.log("Already guessed, try again");
+        prompt()
+      }
+      else {
+        guessedLetters.push(ans.guess.toLowerCase());
+        runWord.guessMade(ans.guess.toLowerCase());
+        nextStep();
+      }
+    });
   }
   else if (guesses === 0) {
     console.log("Ran out of guesses!")
