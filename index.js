@@ -6,6 +6,8 @@ var wordOpt = ["argument", "boolean", "branch", "bracket", "callback", "construc
 var guesses = 10;
 var wordToGuess = "";
 var runWord;
+var compareArr = [];
+var letterGuessed;
 var display;
 var booArr = [];
 var guessedLetters = [];
@@ -14,7 +16,9 @@ var guessedLetters = [];
 function newWord() {
   wordToGuess = wordOpt[Math.floor(Math.random() * wordOpt.length)];
   runWord = new Word(wordToGuess);
-  lettersLeft = runWord.lettersArr.length;
+  for (var l = 0; l < runWord.lettersArr.length; l++) {
+    compareArr.push(runWord.lettersArr[l].letterToGuess)
+  }
   pushBoo();
 };
 
@@ -53,17 +57,18 @@ function prompt(){
       else {
         guessedLetters.push(ans.guess.toLowerCase());
         runWord.guessMade(ans.guess.toLowerCase());
+        letterGuessed = ans.guess.toLowerCase();
         nextStep();
       }
     });
   }
   else if (guesses === 0) {
     console.log("Ran out of guesses!")
-    playAgain(); //TODO
+    // TODO playAgain();
   }
   else if (!booArr.includes(false)) {
     console.log("You got it!")
-    playAgain(); //TODO
+     //TODO playAgain();
   }
   else {
     console.log("End")
@@ -71,18 +76,16 @@ function prompt(){
 }
 
 function nextStep() {
-  // TODO If letter exists, console log correct
-  // TODO subtract from letters left
-  /*if () {
+  // If letter exists, console log correct
+  if (compareArr.includes(letterGuessed)) {
     console.log("CORRECT!")
-  }*/
-  // TODO if letter does not exist, console log incorrect
-  // TODO subract from guesses left
-  /*else if() {
+  }
+  // If letter does not exist, console log incorrect
+  // subract from guesses left
+  else {
     guesses--;
     console.log("INCORRECT! \nGuesses Left: " + guesses)
-  }*/
-
+  }
   // TODO If all the letters are guessed, end game
   // TODO Else, keep playing
   pushBoo();
