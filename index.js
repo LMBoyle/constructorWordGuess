@@ -44,44 +44,42 @@ function displayWord() {
 // Prompt the user to guess a letter
 function prompt(){
   if (guesses > 0 && booArr.includes(false)) {
-    inquirer
-      .prompt([
-        {
-          type: "input",
-          name: "guess",
-          message: "Guess a letter!"
-        }
-      ]).then(function (ans) {
-        if (ans.guess === "") {
-          inquirer
-            .prompt([
-              {
-                type: "confirm",
-                name: "noAns",
-                message: "Do you want to keep playing?",
-                default: true
-              }
-            ]).then(function(ans){
-              if (ans.noAns) {
-                prompt()
-              }
-              else {
-                console.log("\nThanks for playing")
-                console.log("\n==================================\n")
-              }
-            });
-        }
-        else if (guessedLetters.includes(ans.guess)) {
-          console.log("\nAlready guessed, try again\n");
-          prompt();
-        }
-        else {
-          guessedLetters.push(ans.guess.toLowerCase());
-          runWord.guessMade(ans.guess.toLowerCase());
-          letterGuessed = ans.guess.toLowerCase();
-          nextStep();
-        }
-      });
+    inquirer.prompt([
+      {
+        type: "input",
+        name: "guess",
+        message: "Guess a letter!"
+      }
+    ]).then(function (ans) {
+      if (ans.guess === "") {
+        inquirer.prompt([
+          {
+            type: "confirm",
+            name: "noAns",
+            message: "Do you want to keep playing?",
+            default: true
+          }
+        ]).then(function(ans){
+          if (ans.noAns) {
+            prompt()
+          }
+          else {
+            console.log("\nThanks for playing")
+            console.log("\n==================================\n")
+          }
+        });
+      }
+      else if (guessedLetters.includes(ans.guess)) {
+        console.log("\nAlready guessed, try again\n");
+        prompt();
+      }
+      else {
+        guessedLetters.push(ans.guess.toLowerCase());
+        runWord.guessMade(ans.guess.toLowerCase());
+        letterGuessed = ans.guess.toLowerCase();
+        nextStep();
+      }
+    });
   }
   else if (guesses === 0) {
     console.log("Ran out of guesses!\n");
