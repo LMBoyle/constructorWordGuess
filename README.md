@@ -14,7 +14,7 @@ How to use node.js with constructor functions
 * JavaScript
 * Node.js
 
-## NPM Packages
+### NPM Packages
 * Inquirer
 
 ## Demo
