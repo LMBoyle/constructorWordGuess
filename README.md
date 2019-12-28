@@ -14,6 +14,7 @@ Or
 Run `npm install` or `yarn install` and make sure **inquirer** and **colors** are installed.
 
 ## Instructions
+
 Run `node index.js` to get started.
 
 Press letters on your keyboard to make a guess. Good luck!
@@ -27,11 +28,11 @@ Press letters on your keyboard to make a guess. Good luck!
 * Colors
 
 ## Demo
+
 ![Demo Gif](guessDemo.gif)
 
 ## Future Development/Improvements
 - [ ] Minor bug where guessed letter does not reset
 - [ ] Minor bug where it prompts to play again than guess last letter again
 
-## Links
-[Portfolio](https://lmboyle.github.io/)
+&copy; 2019 [Luke Boyle](https://lmboyle.github.io/)
