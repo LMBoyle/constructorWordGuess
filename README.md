@@ -33,6 +33,5 @@ Press letters on your keyboard to make a guess. Good luck!
 
 ## Future Development/Improvements
 - [ ] Minor bug where guessed letter does not reset
-- [ ] Minor bug where it prompts to play again than guess last letter again
 
 &copy; 2019 [Luke Boyle](https://lmboyle.github.io/)
