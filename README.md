@@ -1,21 +1,30 @@
 # Constructor Word Guess
-A simple, web-developer, word guess game.
 
+Back-End, web-developer themed word guess game
+
+## Installation
+To use, first clone the repository to your local machine.
+
+    $ https://github.com/LMBoyle/constructorWordGuess.git
+
+Or
+
+    $ git@github.com:LMBoyle/constructorWordGuess.git
+
+Run `npm install` or `yarn install` and make sure **inquirer** and **colors** are installed.
 
 ## Instructions
-Use in a terminal.
+Run `node index.js` to get started.
 
 Press letters on your keyboard to make a guess. Good luck!
 
-## What It Teaches
-How to use node.js with constructor functions
-
-## Languages/Technologies 
+## Built With... 
 * JavaScript
 * Node.js
 
-## NPM Packages
+### NPM Packages
 * Inquirer
+* Colors
 
 ## Demo
 ![Demo Gif](guessDemo.gif)
